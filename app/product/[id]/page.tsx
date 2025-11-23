@@ -18,7 +18,7 @@ const Product = () => {
   console.log(product[0].image[0],img);
   
 
-  const changeImg =(index:Number)=>{
+  const changeImg =(index:number)=>{
     //console.log(index);
     if(index === 0)
      setImg(product[0].image[0]);

@@ -2,24 +2,24 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
 interface product {
-     _id : String,
-     name: String,
-     category: String,
-     price: Number,
-     offerPrice: Number,
-     image: String[],
-     link: String,
-     discription : String
+     _id : string,
+     name: string,
+     category: string,
+     price: number,
+     offerPrice: number,
+     image: string[],
+     link: string,
+     discription : string
 }
 interface category {
-     name: String,
-     image: String,
+     name: string,
+     image: string,
 }
 
 interface state {
      products : product[],
      categorys : category[],
-     message : String
+     message : string
 }
 
 const initialState: state = {
@@ -39,7 +39,7 @@ const Slice = createSlice({
           initCategory(state, action: PayloadAction<category[]>) {
                state.categorys = action.payload;
           }, 
-          initMessage(state, action:PayloadAction<String>) {
+          initMessage(state, action:PayloadAction<string>) {
                state.message = action.payload;
           }
      }

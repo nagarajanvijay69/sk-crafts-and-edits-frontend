@@ -9,13 +9,13 @@ const Home = () => {
 
   const router = useRouter();
 
-  const route = (id: String) => {
+  const route = (id: string) => {
     router.push(`/product/${id}`)
   }
 
-  let products = useSelector((state: RootState) => state.products.products);
-  let category = useSelector((state: RootState) => state.products.categorys);
-  let message: String = useSelector((state: RootState) => state.products.message);
+  const products = useSelector((state: RootState) => state.products.products);
+  const category = useSelector((state: RootState) => state.products.categorys);
+  const message: string = useSelector((state: RootState) => state.products.message);
 
   return <>
     <div className="home w-[95%] mx-auto md:w-[97%]">

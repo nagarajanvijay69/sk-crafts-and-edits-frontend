@@ -2,18 +2,18 @@
 
 import { useSelector } from "react-redux"
 import { RootState } from "../store/Redux-store";
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Products = () => {
 
   const [search, setSearch] = useState('');
-  let temp = useSelector((state: RootState) => state.products.products);
-  let products = temp.filter((item) => item.name.toLowerCase().includes(search.toLocaleLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase()));
+  const temp = useSelector((state: RootState) => state.products.products);
+  const products = temp.filter((item) => item.name.toLowerCase().includes(search.toLocaleLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase()));
 
   const router = useRouter();
 
-  const route = (id: String) => {
+  const route = (id: string) => {
     router.push(`/product/${id}`)
   }
 

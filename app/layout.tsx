@@ -3,8 +3,8 @@
 import "./globals.css";
 import Navbar from './navabar/Navbar'
 import Foot from './navabar/Foot'
-import { Provider, useDispatch, useSelector } from "react-redux";
-import store, { AppDispatch, RootState } from "./store/Redux-store";
+import { Provider } from "react-redux";
+import store from "./store/Redux-store";
 import { useEffect } from "react";
 import axios from "axios";
 import { initCategory, initMessage, initProduct } from "./store/Slice";

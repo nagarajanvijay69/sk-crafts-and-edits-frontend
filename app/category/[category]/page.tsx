@@ -10,14 +10,14 @@ const Products = () => {
   const params = useParams();
   const category = params.category;
   const [search, setSearch] = useState('');
-  let temp = useSelector((state: RootState) => state.products.products).filter((item) => item.category === category);
-  let cat = useSelector((state: RootState) => state.products.categorys);
-  let products = temp.filter((item) => item.name.toLowerCase().includes(search.toLocaleLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase()));
+  const temp = useSelector((state: RootState) => state.products.products).filter((item) => item.category === category);
+  const cat = useSelector((state: RootState) => state.products.categorys);
+  const products = temp.filter((item) => item.name.toLowerCase().includes(search.toLocaleLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase()));
 
   const router = useRouter();
 
 
-  const route = (id: String) => {
+  const route = (id: string) => {
     router.push(`/product/${id}`)
   }
 
@@ -27,17 +27,15 @@ const Products = () => {
   useEffect(()=>{
     console.log('useefect');
     
-    let t = cat.find((item)=> {
-      item.name === category;
-      console.log(item.name === category, category, item.name);
-      
+    const t = cat.find((item)=> {
+      item.name == category;
     });
     if(t) setFind(true);
     else setFind(false);
     
   },[]);
   
-  console.log(find, params.category);
+ // console.log(find, params.category);
 
 
 
