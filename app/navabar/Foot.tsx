@@ -4,7 +4,7 @@ const Foot = () => {
   return <>
     <div className={`footer bg-gradient-to-r from-gray-800 to-gray-500 text-white px-3 py-5`}>
       <div className="top-content w-full flex flex-col items-center">
-        <span className="text-2xl font-bold">Sk Crafts and Edits</span>
+        <span className="text-2xl font-bold">SK Crafts and Edits</span>
         <p className="my-3">Welcome to SK Edits & Crafts, where creativity meets memories. We specialize in personalized, handcrafted gifts designed to make every occasion meaningful. Every product is made with love, detail, and care to turn your moments into lasting treasures.</p>
       </div>
       <div className="links my-1">
