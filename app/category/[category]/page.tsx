@@ -43,7 +43,7 @@ const Products = () => {
   return <>
     <div className="products w-[95%] md:w-[97%] my-5 mx-auto min-h-[100dvh]">
       <div className="search flex justify-center gap-4">
-        <input type="search" value={search} className="border-2 border-orange-950 rounded w-90 h-10 focus:outline-none px-4"
+        <input type="search" placeholder="Search Here...." value={search} className="border-2 border-orange-950 rounded w-90 h-10 focus:outline-none px-4"
           onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => {
             // console.log(e.key)
           }} />
@@ -51,7 +51,6 @@ const Products = () => {
       </div>
       <div className="items my-5">
         <span className="text-xl font-bold">Products</span>
-
         <div className="product-list my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
 
           {products[0] ?

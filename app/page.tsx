@@ -37,9 +37,9 @@ const Home = () => {
           {
             category[0] ?
               category.map((item, index) => (
-                <div key={index} onClick={() => router.push(`category/${item.name}`)} className="">
-                    <div className="cursor-pointer flex">
-                      <img className="rounded hover:scale-103 transition object-cover w-full h-40" src={`${item.image}`} />
+                <div key={index} onClick={() => router.push(`/category/${item.name}`)} className="cursor-pointer ">
+                    <div className="flex">
+                      <img className="rounded object-cover w-full h-40" src={`${item.image}`} />
                     </div>
                     <div className="text-center text-lg font-bold pb-3 mt-3 text-orange-800">{item.name}</div>
                 </div>
@@ -58,9 +58,9 @@ const Home = () => {
           {
             products[0] ?
               products?.slice(-5).map((item, index) => (
-                <div onClick={() => route(item._id)} key={index} className="border-2 border-gray-300 rounded-md shadow-xl md:px-4 px-3 py-2 pb-4 bg-white">
-                  <div className="group cursor-pointer flex items-center justify-center px-1">
-                    <img className="group-hover:scale-105 rounded object-cover transition h-25 w-full lg:h-35 mt-2 wrap mb-2" src={`${item.image[0]}`} />
+                <div onClick={() => route(item._id)} key={index} className="cursor-pointer border-2 border-gray-300 rounded-md shadow-xl md:px-4 px-3 py-2 pb-4 bg-white">
+                  <div className="flex items-center justify-center px-1">
+                    <img className="rounded object-cover h-25 w-full lg:h-35 mt-2 wrap mb-2" src={`${item.image[0]}`} />
                   </div>
                   <div className="text-gray-600 text-sm">
                     <p className="">{item.category}</p>
