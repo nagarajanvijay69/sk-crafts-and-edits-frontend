@@ -3,7 +3,7 @@ import SkLogo from "../../public/sk.png"
 
 const About = () => {
   return <>
-    <div className="about w-[95%] md:w-[97%] mx-auto my-5">
+    <div className="about w-[95%] md:w-[97%] mx-auto my-5 min-h-[100dvh]">
       <div className="flex justify-center mb-3"><Image src={SkLogo} alt="sk-logo" width={200} height={200} className="w-[200px]"/></div>
       <div className="text-center text-2xl font-bold mb-5 text-orange-950">About Us</div>
       <p className="font-semibold text-gray-900">At SK Edits & Crafts, we believe that every gift tells a story. Founded with a passion for creativity and craftsmanship, our mission is to bring smiles through unique, customized, and meaningful products. Every product is crafted with love, detail, and innovation – because we don’t just make gifts, we create memories.</p>

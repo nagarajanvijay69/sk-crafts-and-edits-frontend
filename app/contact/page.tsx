@@ -1,6 +1,6 @@
 const Contact = () => {
   return <>
-    <div className="contact my-5 w-[95%] mx-auto md:w-[97%] text-gray-900">
+    <div className="contact my-5 w-[95%] mx-auto md:w-[97%] text-gray-900 min-h-[100dvh]">
       <div className="text-center text-2xl font-bold my-3 text-orange-950">Contact Us</div>
       <p className="text-center">We’d love to hear from you! Whether it’s an order, a custom idea, or just a question, our team is here to help.</p>
       <ul className="my-8">

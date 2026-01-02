@@ -41,7 +41,7 @@ const Products = () => {
 
 
   return <>
-    <div className="products w-[95%] md:w-[97%] my-5 mx-auto">
+    <div className="products w-[95%] md:w-[97%] my-5 mx-auto min-h-[100dvh]">
       <div className="search flex justify-center gap-4">
         <input type="search" value={search} className="border-2 border-orange-950 rounded w-90 h-10 focus:outline-none px-4"
           onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => {
