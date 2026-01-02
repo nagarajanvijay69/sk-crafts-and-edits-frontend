@@ -2,13 +2,13 @@ import Link from "next/link"
 
 const Foot = () => {
   return <>
-    <div className={`footer bg-gradient-to-r from-gray-800 to-gray-500 text-white px-3 py-5`}>
+    <div className={`footer bg-orange-950 text-gray-300 px-3 py-5 font-semibold`}>
       <div className="top-content w-full flex flex-col items-center">
-        <span className="text-2xl font-bold">SK Crafts and Edits</span>
+        <span className="text-2xl font-bold text-white">SK Crafts and Edits</span>
         <p className="my-3">Welcome to SK Edits & Crafts, where creativity meets memories. We specialize in personalized, handcrafted gifts designed to make every occasion meaningful. Every product is made with love, detail, and care to turn your moments into lasting treasures.</p>
       </div>
       <div className="links my-1">
-        <span className="text-lg font-semibold">Quick Links</span>
+        <span className="text-lg font-semibold text-white">Quick Links</span>
         <ul className="pl-4 flex flex-col gap-1 w-min">
           <Link href="/"><li>Home</li></Link>
           <Link href="/products"><li>Products</li></Link>
@@ -17,7 +17,7 @@ const Foot = () => {
         </ul>
       </div>
       <div className="location my-2">
-        <span className="text-lg font-semibold">Location</span>
+        <span className="text-lg font-semibold text-white">Location</span>
         <ul className="pl-4 flex flex-col gap-1">
           <li>Sk Crafts & Edits</li>
           <li>Tirunelveli, Tamilnadu</li>
@@ -25,7 +25,7 @@ const Foot = () => {
         </ul>
       </div>
       <div className="connect my-2 mb-6">
-        <span className="text-lg font-semibold">Connect With Us</span>
+        <span className="text-lg font-semibold text-white">Connect With Us</span>
         <ul className="pl-4 flex flex-col gap-1 w-min">
           <a target="_blank" href="https://www.instagram.com/creative_sk_editz/?igsh=MXkxNHpzaDhnbjhhZw%3D%3D#"><li>Instagram</li></a>
           <a target="_blank" href="https://www.youtube.com/@its_me_sk_001"><li>Youtube</li></a>

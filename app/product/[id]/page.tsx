@@ -39,12 +39,12 @@ const Product = () => {
       {
         product[0] ?
           <div className="max-w-6xl w-full px-6 my-8">
-            <div className="flex flex-col md:flex-row gap-16 mt-4">
+            <div className="flex flex-col md:flex-row gap-10 md:gap-16 mt-4">
               <div className="flex gap-3">
                 <div className="flex flex-col gap-3">
                   {product[0].image.map((image, index) => (
                     <div key={index} onClick={()=> changeImg(index)} className="border h-20 w-20 lg:h-25 lg:w-25 border-gray-500/30 rounded overflow-hidden cursor-pointer" >
-                      <img src={`${image}`} />
+                      <img src={`${image}`} className="h-full w-full object-cover" />
                     </div>
                   ))}
                 </div>
@@ -55,27 +55,28 @@ const Product = () => {
               </div>
 
               <div className="text-sm w-full md:w-1/2">
-                <h1 className="text-3xl font-medium">{product[0]?.name}</h1>
+                <h1 className="text-4xl font-bold">{product[0]?.name}</h1>
 
-                <div className="flex items-center gap-0.5 mt-1">
-                  <p className="text-base">{product[0]?.category}</p>
+                <div className="flex items-center gap-0.5 mt-3">
+                  <p className="text-lg font-semibold">{product[0]?.category}</p>
                 </div>
 
-                <div className="mt-6">
-                  <p className="text-gray-500/70 line-through"> rs {`${product[0].price}`} </p>
-                  <p className="text-2xl font-medium">rs {`${product[0].offerPrice}`}</p>
-                  <span className="text-gray-500/70">(inclusive of all taxes)</span>
+                <div className="mt-3">
+                  <p className="text-gray-700/70 line-through text-lg"> ₹{`${product[0].price}`} </p>
+                  <p className="text-4xl font-medium">₹{`${product[0].offerPrice}`}</p>
+                  <span className="text-gray-700/70">(inclusive of all taxes)</span>
                 </div>
 
-                <p className="text-base font-medium mt-6">About Product</p>
-                <ul className="ml-4 text-gray-500/70">
+                <p className="text-base font-medium mt-5">About Product</p>
+                <ul className="ml-4 text-gray-700/70">
                   <li>{product[0].discription}</li>
                 </ul>
 
                 <div className="flex items-center mt-10 gap-4 text-base">
                   {
                     product[0].link &&
-                    <a href={`${product[0].link}`} className="w-full py-3.5 text-center rounded cursor-pointer font-medium bg-gray-600 text-white hover:bg-gray-700 transition" >
+                    <a href={`${product[0].link}`} className="w-full py-3.5 text-center rounded cursor-pointer font-medium
+                     bg-orange-950 text-white hover:bg-orange-900 transition" >
                      Buy Now
                     </a>
                   }
