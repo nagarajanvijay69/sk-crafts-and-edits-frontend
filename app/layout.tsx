@@ -41,7 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <link rel="icon" href="../sk.png" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
         </head>
-        <body className="w-[100dvw] box-border overflow-x-hidden overflow-y-scroll bg-gray-100">
+        <body className="w-[100dvw] box-border overflow-x-hidden overflow-y-scroll bg-orange-300/40">
           <Navbar />
           <Provider store={store}>
             {children}

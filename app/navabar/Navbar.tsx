@@ -12,10 +12,10 @@ const Navbar = () => {
      }
 
      return <>
-          <div className="nav-body bg-orange-950 text-white flex z-10 h-18 items-center justify-between px-5 relative w-[100dvw]">
-                    <h1 className="text-2xl font-bold flex z-10"><Link href='/'><span>SK</span> Edits and Crafts</Link></h1>
-               <ul className={`flex gap-5 z-0 flex-col font-semibold lg:flex-row absolute lg:static pl-5 lg:pl-0 h-60 lg:h-auto top-[72px]
-                     ${Nav ? 'left-[0px] gap-7 pt-7 text-orange-950 bg-orange-100 h-[100dvh] fixed w-[100dvw] duration-500' : 'left-[-200px]'}`}>
+          <div className="nav-body flex z-10 h-18 items-center justify-between px-5 relative w-[100dvw]">
+                    <h1 className="text-2xl font-bold flex z-10 text-orange-950"><Link href='/'><span>SK</span> Edits and Crafts</Link></h1>
+               <ul className={`flex gap-5 z-0 flex-col font-semibold lg:flex-row absolute lg:static pl-5 lg:pl-0 h-60 lg:h-auto top-[72px]  text-orange-950
+                     ${Nav ? 'left-[0px] gap-7 pt-7 bg-orange-100 h-[100dvh] fixed w-[100dvw] duration-500' : 'left-[-200px]'}`}>
                     <Link href="/"><li onClick={toggle}>Home</li></Link>
                     <Link href="/products"><li onClick={toggle}>Products</li></Link>
                     <Link href="/about"><li onClick={toggle}>About</li></Link>
