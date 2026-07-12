@@ -18,56 +18,106 @@ const Products = () => {
   }
 
 
-  return <>
-    <div className="products w-[95%] md:w-[97%] my-5 mx-auto text-gray-900 min-h-[100dvh]">
-      <div className="search flex justify-center gap-4">
-        <input type="search" value={search} className="border-2 border-orange-950 rounded w-90 h-10 focus:outline-none px-4"
-          onChange={(e) => setSearch(e.target.value)} placeholder="Search Here....." />
-        <button className="bg-orange-950 text-white cursor-pointer w-25 rounded-xl">Search</button>
-      </div>
-      <div className="items my-5">
-        <span className="text-xl font-bold text-orange-950">Products</span>
+  return (
+    <>
+      <div className="space-y-8 pb-12">
+        {/* Header Title */}
+        <div className="text-center space-y-2 mt-4">
+          <span className="text-xs font-bold tracking-wider text-brand-pink uppercase">Explore Our Shop</span>
+          <h1 className="text-4xl font-extrabold font-playfair text-slate-800">All Collections</h1>
+          <p className="text-sm text-slate-500 max-w-md mx-auto">
+            Find the perfect handcrafted custom gifts and photo frames for your loved ones.
+          </p>
+        </div>
 
-        <div className="product-list my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
+        {/* Premium Search Bar */}
+        <div className="max-w-md mx-auto relative group">
+          <input 
+            type="search" 
+            value={search} 
+            onChange={(e) => setSearch(e.target.value)} 
+            placeholder="Search products by name or category..." 
+            className="w-full pl-5 pr-12 py-3.5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all"
+          />
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-pink transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z" />
+            </svg>
+          </div>
+        </div>
 
-          {products[0] ?
-            products.map((item, index) => (
-              <div key={index} onClick={() => route(item._id)} className="border-2 border-gray-300 rounded-md shadow-xl md:px-4 px-3 py-2 pb-4 bg-white">
-                  <div className="group cursor-pointer flex items-center justify-center px-1">
-                    <img className="group-hover:scale-105 rounded transition h-25 w-full lg:h-35 mt-2 wrap mb-2" src={`${item.image[0]}`} />
+        {/* Products Grid */}
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold text-slate-800 border-l-4 border-brand-pink pl-3">
+            Products ({products.length})
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {products[0] ? (
+              products.map((item, index) => (
+                <div 
+                  key={index} 
+                  onClick={() => route(item._id)} 
+                  className="group cursor-pointer bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col h-full relative"
+                >
+                  {/* Discount Badge */}
+                  {item.price > item.offerPrice ? (
+                    <span className="absolute top-3 left-3 bg-brand-pink text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">
+                      -{Math.round(((item.price - item.offerPrice) / item.price) * 100)}%
+                    </span>
+                  ) : null}
+
+                  {/* Product Image */}
+                  <div className="aspect-square w-full rounded-xl overflow-hidden bg-slate-50 relative flex items-center justify-center mb-3">
+                    <img 
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
+                      src={`${item.image[0]}`} 
+                      alt={item.name}
+                    />
                   </div>
-                  <div className="text-gray-600 text-sm">
-                    <p className="">{item.category}</p>
-                    <p className="text-orange-950 font-bold text-lg truncate w-full">{item.name}</p>
-                    <div className="flex items-end justify-between mt-[-5px]">
-                      <p className="md:text-xl text-base font-medium text-gray-800">
-                        <>
-                          ₹{item.offerPrice}<span className="text-gray-500 md:text-sm text-xs line-through ml-1">
-                            <>
-                              ₹{item.price}
-                            </>
-                          </span>
-                        </>
-                      </p>
-                      <div className="">
-                        {item.link &&
-                          <button className="bg-orange-950 text-white shadow-xl md:w-[80px] w-[69px] h-[34px] rounded font-medium"  >
-                            <a href={`${item.link}`}>Buy Now</a>
-                          </button>
-                        }
+
+                  {/* Description details */}
+                  <div className="space-y-1.5 flex-1 flex flex-col">
+                    <p className="text-[10px] font-bold tracking-wider text-brand-pink uppercase">{item.category}</p>
+                    <h3 className="font-bold text-slate-800 text-sm group-hover:text-brand-pink transition-colors line-clamp-2 leading-snug">
+                      {item.name}
+                    </h3>
+                    
+                    {/* Price and Buy Button */}
+                    <div className="flex items-center justify-between pt-3 mt-auto border-t border-slate-50 gap-2">
+                      <div className="space-y-0.5">
+                        {item.price > item.offerPrice ? (
+                          <span className="text-[11px] text-slate-400 line-through">₹{item.price}</span>
+                        ) : null}
+                        <p className="text-sm font-bold text-slate-900">₹{item.offerPrice}</p>
                       </div>
+                      
+                      {item.link ? (
+                        <a 
+                          href={`${item.link}`}
+                          onClick={(e) => e.stopPropagation()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="brand-gradient-bg text-white text-[11px] font-bold px-3 py-1.5 rounded-lg shadow-sm hover:opacity-90 transition-opacity flex-shrink-0"
+                        >
+                          Buy Now
+                        </a>
+                      ) : null}
                     </div>
                   </div>
                 </div>
-            ))
-            :
-            <p>No Products found</p>
-          }
-
+              ))
+            ) : (
+              <div className="col-span-full py-16 text-center space-y-3">
+                <span className="text-4xl">🔍</span>
+                <p className="text-slate-400 text-sm italic">No Products Found matching "{search}"</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
+  );
 }
 
 export default Products

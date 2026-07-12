@@ -2,54 +2,98 @@ import Image from "next/image"
 import SkLogo from "../../public/sk.png"
 
 const About = () => {
-  return <>
-    <div className="about w-[95%] md:w-[97%] mx-auto my-5 min-h-[100dvh]">
-      <div className="flex justify-center mb-3"><Image src={SkLogo} alt="sk-logo" width={200} height={200} className="w-[200px]"/></div>
-      <div className="text-center text-2xl font-bold mb-5 text-orange-950">About Us</div>
-      <p className="font-semibold text-gray-900">At SK Edits & Crafts, we believe that every gift tells a story. Founded with a passion for creativity and craftsmanship, our mission is to bring smiles through unique, customized, and meaningful products. Every product is crafted with love, detail, and innovation – because we don’t just make gifts, we create memories.</p>
-       <div className="delivery">
-        <div className="text-center text-xl font-bold pr-3.5 my-5 text-orange-950">🚚 Delivery & Shipping Information</div>
-        <p className="text-center font-semibold text-md text-gray-900">At SK Edits & Crafts, we ensure that your gifts reach you safely, quickly, and in perfect condition.</p>
-        <ul className="my-8 flex flex-col gap-5 font-semibold">
-          <li>
-            <ul>
-              <li className="text-lg font-semibold my-2 text-orange-950">📦 Delivery Partners</li>
-              <li className="ml-7 text-gray-900">We proudly ship through ST Courier and other professional courier services to provide reliable and timely delivery across Tamil Nadu and beyond.</li>
-            </ul>
-          </li>
-          <li>
-            <ul>
-              <li className="text-lg font-semibold my-2 text-orange-950">🕒 Delivery Timeline</li>
-              <li className="ml-7 text-gray-900">Tamil Nadu Orders: 2 – 4 business days.</li>
-              <li className="ml-7 text-gray-900">Other States (if applicable): 4 – 7 business days</li>
-              <li className="ml-7 text-gray-900">Express delivery available on request (extra charges may apply).</li>
-            </ul>
-          </li>
-          <li>
-            <ul>
-              <li className="text-lg font-semibold my-2 text-orange-950">💳 Shipping Charges</li>
-              <li className="ml-7 text-gray-900">Standard delivery charges are applied as per ST Courier service rates.</li>
-              <li className="ml-7 text-gray-900">Free delivery may be available on selected offers & bulk orders.</li>
-            </ul>
-          </li>
-          <li>
-            <ul>
-              <li className="text-lg font-semibold my-2 text-orange-950">✅ Order Tracking</li>
-              <li className="ml-7 text-gray-900">Once shipped, you’ll receive a tracking ID to monitor your order status directly through ST Courier’s website/app.</li>
-            </ul>
-          </li>
-          <li>
-            <ul>
-              <li className="text-lg font-semibold my-2 text-orange-950">📍 Important Notes</li>
-              <li className="ml-7 text-gray-900">All parcels are securely packed to avoid damage during transit.</li>
-              <li className="ml-7 text-gray-900">Delivery timelines may vary slightly due to location or festive rush.</li>
-              <li className="ml-7 text-gray-900">For urgent/last-minute orders, please contact us directly.</li>
-            </ul>
-          </li>
-        </ul>
-       </div>
+  return (
+    <>
+      <div className="max-w-4xl mx-auto space-y-12 pb-12">
+        
+        {/* About Section */}
+        <div className="text-center space-y-4">
+          <div className="flex justify-center mb-2">
+            <div className="p-1 brand-gradient-bg rounded-3xl shadow-md">
+              <Image src={SkLogo} alt="sk-logo" width={140} height={140} className="w-28 h-28 object-contain rounded-2xl bg-white" />
+            </div>
+          </div>
+          <span className="text-xs font-bold tracking-wider text-brand-pink uppercase">Our Story</span>
+          <h1 className="text-4xl font-extrabold font-playfair text-slate-800">About Us</h1>
+          <p className="text-slate-600 leading-relaxed text-base max-w-2xl mx-auto pl-4 border-l-4 border-brand-pink text-left mt-6">
+            At <strong>SK Edits & Crafts</strong>, we believe that every gift tells a unique story. Founded with a passion for creativity and fine craftsmanship, our mission is to bring genuine smiles through customized, meaningful products. Every frame and piece is crafted with love, detail, and innovation – because we don’t just make gifts, we help you shape lasting memories.
+          </p>
+        </div>
+
+        {/* Shipping & Delivery Section */}
+        <div className="space-y-6 pt-6 border-t border-slate-100">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold tracking-wider text-brand-pink uppercase">Logistics & Shipping</span>
+            <h2 className="text-2xl font-extrabold text-slate-800">Delivery Information</h2>
+            <p className="text-sm text-slate-500 max-w-md mx-auto">
+              We ensure that your custom gifts reach you safely, quickly, and in perfect condition.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            
+            {/* Card 1: Partners */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl p-2 bg-brand-pink/10 rounded-xl">📦</span>
+                <h3 className="font-bold text-slate-800 text-base">Delivery Partners</h3>
+              </div>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                We ship through ST Courier and professional delivery services to provide reliable, timely shipments across Tamil Nadu and other states.
+              </p>
+            </div>
+
+            {/* Card 2: Timeline */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl p-2 bg-brand-pink/10 rounded-xl">🕒</span>
+                <h3 className="font-bold text-slate-800 text-base">Delivery Timeline</h3>
+              </div>
+              <ul className="text-xs text-slate-500 space-y-1.5 list-disc pl-4 leading-relaxed">
+                <li>Tamil Nadu: 2 to 4 business days.</li>
+                <li>Other States: 4 to 7 business days.</li>
+                <li>Express delivery options are available upon direct request.</li>
+              </ul>
+            </div>
+
+            {/* Card 3: Shipping Charges */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl p-2 bg-brand-pink/10 rounded-xl">💳</span>
+                <h3 className="font-bold text-slate-800 text-base">Shipping Charges</h3>
+              </div>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Standard delivery charges are calculated as per professional courier rate charts. Keep an eye out for special offers & free delivery on bulk orders!
+              </p>
+            </div>
+
+            {/* Card 4: Order Tracking */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl p-2 bg-brand-pink/10 rounded-xl">✅</span>
+                <h3 className="font-bold text-slate-800 text-base">Order Tracking</h3>
+              </div>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Once shipped, you will receive a tracking ID to monitor your order status directly via the ST Courier web portal or customer application.
+              </p>
+            </div>
+
+            {/* Important Notes */}
+            <div className="bg-gradient-to-br from-brand-pink-light/80 to-brand-pink-light/40 border border-brand-pink/20 p-6 rounded-2xl text-slate-800 col-span-full shadow-sm space-y-2">
+              <h3 className="font-bold text-brand-pink-dark text-sm uppercase tracking-wider">⚠️ Important Notes</h3>
+              <ul className="text-xs text-slate-600 list-disc pl-4 space-y-1.5 leading-relaxed">
+                <li>All frames are packaged in secure multi-layered bubble wrapping to avoid damages in transit.</li>
+                <li>Delivery timelines may vary slightly due to weather conditions or peak festive seasons.</li>
+                <li>For urgent or last-minute orders, please reach out to us directly over WhatsApp.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
       </div>
-   </>
+    </>
+  );
 }
 
-export default About
+export default About;

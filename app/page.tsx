@@ -21,88 +21,212 @@ const Home = () => {
   const category = useSelector((state: RootState) => state.products.categorys);
   const message: string = useSelector((state: RootState) => state.products.message);
 
-  return <>
-    <div className="home w-[95%] mx-auto md:w-[97%]">
-      <div className={`message ${message?.trim() ? 'my-2 text-center text-blue-500 bg-gray-200 rounded py-3' : ''}  font-bold`}>
-        {message}
-      </div>
-      <div className="banner w-full">
-        <Image src={PC} alt="banner" className="rounded-2xl hidden lg:block mt-4" />
-        <Image src={MB} alt="banner" className="rounded block lg:hidden mt-4" />
-      </div>
-      <div className="category mt-8">
-        <span className="text-xl font-bold text-orange-950 mb-4">Category</span>
+  return (
+    <>
+      <div className="space-y-12 pb-8">
+        
+        {/* Urgent/Important Store Message */}
+        {message?.trim() ? (
+          <div className="flex items-center gap-2 justify-center py-4 px-6 text-center text-brand-pink-dark bg-brand-pink-light border border-brand-pink/20 rounded-2xl font-semibold shadow-sm animate-pulse text-sm">
+            <span className="text-base">📢</span> {message}
+          </div>
+        ) : null}
 
-        <div className="product-list mt-3 mb-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
-          {
-            category[0] ?
+        {/* Hero Banner Section */}
+        <div className="w-full rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl transition-shadow duration-500 bg-white">
+          <Image 
+            src={PC} 
+            alt="Main Banner" 
+            className="w-full h-auto hidden lg:block hover:scale-[1.01] transition-transform duration-700 ease-out" 
+            priority
+          />
+          <Image 
+            src={MB} 
+            alt="Mobile Banner" 
+            className="w-full h-auto block lg:hidden hover:scale-[1.01] transition-transform duration-700 ease-out"
+            priority
+          />
+        </div>
+
+        {/* Categories Section */}
+        <div className="space-y-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between">
+            <div>
+              <span className="text-xs font-bold tracking-wider text-brand-pink uppercase">Shop By</span>
+              <h2 className="text-3xl font-extrabold font-playfair text-slate-800 mt-1">Categories</h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {category[0] ? (
               category.map((item, index) => (
-                <div key={index} onClick={() => router.push(`/category/${item.name}`)} className="cursor-pointer ">
-                    <div className="flex">
-                      <img className="rounded object-cover w-full h-40" src={`${item.image}`} />
+                <div 
+                  key={index} 
+                  onClick={() => router.push(`/category/${item.name}`)} 
+                  className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 flex flex-col h-full"
+                >
+                  <div className="relative overflow-hidden h-40 w-full bg-slate-50">
+                    <img 
+                      className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" 
+                      src={`${item.image}`} 
+                      alt={item.name} 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
+                      <span className="text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-lg glass-panel">
+                        Explore &rarr;
+                      </span>
                     </div>
-                    <div className="text-center text-lg font-bold pb-3 mt-3 text-orange-800">{item.name}</div>
+                  </div>
+                  <div className="text-center text-sm font-bold py-3 text-slate-700 group-hover:text-brand-pink transition-colors border-t border-slate-50 mt-auto px-2">
+                    {item.name}
+                  </div>
                 </div>
               ))
-              :
-              <p className="text-orange-950">No Category Found</p>
-          }
-
+            ) : (
+              <p className="text-slate-400 text-sm italic col-span-full py-4">No Categories Found</p>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="items my-5">
-        <span className="text-xl font-bold text-orange-950">Latest Collections</span>
 
-        <div className="product-list mt-3 mb-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
+        {/* Latest Collections Section */}
+        <div className="space-y-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between">
+            <div>
+              <span className="text-xs font-bold tracking-wider text-brand-pink uppercase">Fresh Arrivals</span>
+              <h2 className="text-3xl font-extrabold font-playfair text-slate-800 mt-1">Latest Collections</h2>
+            </div>
+            <button 
+              className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-brand-pink hover:text-brand-pink-dark transition-colors group mt-2 md:mt-0 cursor-pointer" 
+              onClick={() => router.push('/products')}
+            >
+              View All Collections <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+            </button>
+          </div>
 
-          {
-            products[0] ?
-              products?.slice(-5).map((item, index) => (
-                <div onClick={() => route(item._id)} key={index} className="cursor-pointer border-2 border-gray-300 rounded-md shadow-xl md:px-4 px-3 py-2 pb-4 bg-white">
-                  <div className="flex items-center justify-center px-1">
-                    <img className="rounded object-cover h-25 w-full lg:h-35 mt-2 wrap mb-2" src={`${item.image[0]}`} />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {products[0] ? (
+              products.slice(-5).reverse().map((item, index) => (
+                <div 
+                  onClick={() => route(item._id)} 
+                  key={index} 
+                  className="group cursor-pointer bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col h-full relative"
+                >
+                  {/* Discount Badge */}
+                  {item.price > item.offerPrice ? (
+                    <span className="absolute top-3 left-3 bg-brand-pink text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm">
+                      -{Math.round(((item.price - item.offerPrice) / item.price) * 100)}%
+                    </span>
+                  ) : null}
+
+                  {/* Product Image */}
+                  <div className="aspect-square w-full rounded-xl overflow-hidden bg-slate-50 relative flex items-center justify-center mb-3">
+                    <img 
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
+                      src={`${item.image[0]}`} 
+                      alt={item.name}
+                    />
                   </div>
-                  <div className="text-gray-600 text-sm">
-                    <p className="">{item.category}</p>
-                    <p className="text-orange-950 font-bold text-lg truncate w-full">{item.name}</p>
-                    <div className="flex items-end justify-between mt-[-5px]">
-                      <p className="md:text-xl text-base font-medium text-gray-800">
-                        <>
-                          ₹{item.offerPrice}<span className="text-gray-500 md:text-sm text-xs line-through ml-1">
-                            <>
-                              ₹{item.price}
-                            </>
-                          </span>
-                        </>
-                      </p>
-                      <div className="">
-                        {item.link &&
-                          <button className="bg-orange-950 text-white shadow-xl md:w-[80px] w-[69px] h-[34px] rounded font-medium"  >
-                            <a href={`${item.link}`}>Buy Now</a>
-                          </button>
-                        }
+
+                  {/* Content details */}
+                  <div className="space-y-1.5 flex-1 flex flex-col">
+                    <p className="text-[10px] font-bold tracking-wider text-brand-pink uppercase">{item.category}</p>
+                    <h3 className="font-bold text-slate-800 text-sm group-hover:text-brand-pink transition-colors line-clamp-2 leading-snug">
+                      {item.name}
+                    </h3>
+                    
+                    {/* Price and Action Button */}
+                    <div className="flex items-center justify-between pt-3 mt-auto border-t border-slate-50 gap-2">
+                      <div className="space-y-0.5">
+                        {item.price > item.offerPrice ? (
+                          <span className="text-[11px] text-slate-400 line-through">₹{item.price}</span>
+                        ) : null}
+                        <p className="text-sm font-bold text-slate-900">₹{item.offerPrice}</p>
                       </div>
+                      
+                      {item.link ? (
+                        <a 
+                          href={`${item.link}`}
+                          onClick={(e) => e.stopPropagation()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="brand-gradient-bg text-white text-[11px] font-bold px-3 py-1.5 rounded-lg shadow-sm hover:opacity-90 transition-opacity flex-shrink-0"
+                        >
+                          Buy Now
+                        </a>
+                      ) : null}
                     </div>
                   </div>
                 </div>
               ))
-              :
-              <p className="text-orange-950">Products Not Found</p>
-          }
+            ) : (
+              <p className="text-slate-400 text-sm italic col-span-full py-4">Products Not Found</p>
+            )}
+          </div>
+
+          <button 
+            className="md:hidden w-full mt-2 brand-gradient-bg text-white font-bold h-11 rounded-xl shadow-md transition-opacity hover:opacity-90 cursor-pointer" 
+            onClick={() => router.push('/products')}
+          >
+            View All Collections
+          </button>
         </div>
-        <button className="bg-orange-950 text-white cursor-pointer h-10 w-25 rounded-xl" onClick={() => router.push('/products')}>View All</button>
+
+        {/* Why Choose Us Section */}
+        <div className="bg-gradient-to-br from-brand-pink-light/60 via-white to-brand-pink-light/40 py-12 px-6 sm:px-12 rounded-3xl text-slate-800 border border-slate-100/80 shadow-md relative overflow-hidden">
+          <div className="absolute -top-24 -left-24 w-48 h-48 rounded-full bg-brand-pink/10 blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-48 h-48 rounded-full bg-brand-pink/10 blur-3xl" />
+
+          <div className="text-center space-y-1 mb-10 relative z-10">
+            <span className="text-xs font-bold tracking-wider text-brand-pink-dark uppercase">Our Commitment</span>
+            <h2 className="text-3xl font-extrabold font-playfair text-slate-800">Why Choose Us</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+            <div className="flex flex-col items-center text-center space-y-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-brand-pink/40 hover:shadow-md transition-all duration-300">
+              <div className="p-3 bg-brand-pink/15 rounded-xl">
+                <img src="./hand.svg" className="w-8 h-8" alt="Handcrafted" />
+              </div>
+              <h3 className="font-bold text-base text-slate-800">100% Handcrafted</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Every frame and design is customized with detail and creativity for your exact request.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center space-y-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-brand-pink/30 hover:shadow-md transition-all duration-300">
+              <div className="p-3 bg-brand-pink/10 rounded-xl">
+                <img src="./quality.svg" className="w-8 h-8" alt="Premium Quality" />
+              </div>
+              <h3 className="font-bold text-base text-slate-800">Premium Quality</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                We use high-grade materials, durable colors, and solid frames to keep memories fresh.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center space-y-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-brand-pink/40 hover:shadow-md transition-all duration-300">
+              <div className="p-3 bg-brand-pink/15 rounded-xl">
+                <img src="./design.svg" className="w-8 h-8" alt="Trendy Designs" />
+              </div>
+              <h3 className="font-bold text-base text-slate-800">Creative Designs</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Stay up to date with modern templates and custom visual modifications.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center space-y-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-brand-pink/30 hover:shadow-md transition-all duration-300">
+              <div className="p-3 bg-brand-pink/10 rounded-xl">
+                <img src="./happy.svg" className="w-8 h-8" alt="Perfect Occasions" />
+              </div>
+              <h3 className="font-bold text-base text-slate-800">Perfect For Gifting</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Create memorable moments for birthdays, anniversaries, and all special celebrations.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div className="choose bg-orange-200 my-4 rounded-lg">
-        <div className="text-center text-2xl font-bold my-2 mt-4 py-4">Why Choose Us</div>
-        <ul className="flex flex-col gap-3 font-semibold ml-6 pb-6 text-lg">
-          <li className="flex gap-5"><img src="./hand.svg" className="size-[35px]" /><p>100% Personalized & Handcrafted</p></li>
-          <li className="flex gap-5"><img src="./quality.svg" className="size-[35px]" /><p>Premium Quality Materials</p></li>
-          <li className="flex gap-5"><img src="./design.svg" className="size-[35px]" /><p>Creative & Trendy Designs</p></li>
-          <li className="flex gap-5"><img src="./happy.svg" className="size-[35px]" /><p>Perfect for All Occasions</p></li>
-        </ul>
-      </div>
-    </div>
-  </>
+    </>
+  );
 }
 
 export default Home
